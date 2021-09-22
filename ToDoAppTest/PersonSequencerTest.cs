@@ -14,6 +14,7 @@ namespace ToDoAppTest
         [Fact]
         public void PersonIdTest()
         {
+            PersonSequencer.reset();
             for (int i = 0; i < 9; i++)
             {
                 PersonSequencer.nextPersonId();
