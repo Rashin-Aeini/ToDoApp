@@ -84,7 +84,42 @@ namespace ToDoApp.Data
             return FindByAssignee(assignee.PersonId);
 
         }
-        public  static Todo[] FindUnassignedTodoItems()
+
+        public static bool Remove(int todoId)
+        {
+            bool result = false;
+
+            Todo[] temporary = new Todo[Size()];
+
+            int counter = 0;
+            foreach (Todo item in todoArray)
+            {
+                if (item.TodoId == todoId)
+                {
+                    result = true;
+                    continue;
+                }
+
+                if (Size() > counter)
+                {
+                    temporary[counter] = item;
+                    counter++;
+                }
+            }
+
+            if (result)
+            {
+                Array.Resize(ref temporary, Size() - 1);
+            }
+
+            todoArray = temporary;
+
+            return result;
+        }
+
+
+    
+    public  static Todo[] FindUnassignedTodoItems()
         {
             Todo[] result = new Todo[0];
 

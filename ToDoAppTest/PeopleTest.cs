@@ -18,6 +18,13 @@ namespace ToDoAppTest
             Assert.Equal(null,find );
 
         }
+        [Fact]
+        public void RemoveTest()
+        {
+            People.Clear();
+            People.Add(new Person(1));
+            Assert.Equal(true, People.Remove(1));
+        }
 
     }
 }

@@ -40,7 +40,37 @@ namespace ToDoApp.Data
 
         }
 
+        public static bool Remove(int personId)
+        {
+            bool result = false;
 
+            Person[] temporary = new Person[Size()];
+
+            int counter = 0;
+            foreach (Person item in personArray)
+            {
+                if (item.PersonId == personId)
+                {
+                    result = true;
+                    continue;
+                }
+
+                if (Size() > counter)
+                {
+                    temporary[counter] = item;
+                    counter++;
+                }
+            }
+
+            if (result)
+            {
+                Array.Resize(ref temporary, Size() - 1);
+            }
+
+            personArray = temporary;
+
+            return result;
+        }
         public static void Clear()
         {
             personArray = new Person[0];
