@@ -26,6 +26,25 @@ namespace ToDoAppTest
             Assert.Equal(1, TodoItems.FindUnassignedTodoItems().Length);
 
         }
+
+        [Fact]
+        public void ClearTest()
+        {
+            TodoItems.Add(new Todo(1,""));
+            TodoItems.Clear();
+            Assert.Equal(0, TodoItems.Size());
+
+        }
+        [Fact]
+        public void AddTest()
+        {
+            TodoItems.Clear();
+            TodoItems.Add(new Todo(1,""));
+            Assert.Equal(true, TodoItems.Remove(1));
+            TodoItems.Add(new Todo(1,""));
+            Assert.Equal(1, TodoItems.Size());
+
+        }
         [Fact]
         public void RemoveTest()
         {
